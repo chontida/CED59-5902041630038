@@ -17,7 +17,7 @@ class RegisterForm(FlaskForm):
 @app.route('/')
 def member():
     form = RegisterForm()
-    return render_template('add.html', form=form)
+    return render_template('login.html', form=form)
 
 
 @app.route('/register', methods=["GET", "POST"])
@@ -25,7 +25,7 @@ def register():
     form = RegisterForm()
     if form.validate_on_submit():
         return "Register OK"
-    return render_template('add.html', form=form)
+    return render_template('login.html', form=form)
 
 
 if __name__ == '__main__':
