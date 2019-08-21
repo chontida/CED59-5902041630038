@@ -2,70 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Member</title>
-    <script language ="JavaScript">
-        function chk()
-            {
-                name = document.frmRegis.name.value;
-                if(name.length == "")
-                {
-                    alert("กรุณาป้อนชื่อ");
-                    return false;
-                }
-                Surname = document.frmRegis.surname.value;
-                if(Surname.length == "")
-                {
-                    alert("กรุณาป้อนนามสกุล");
-                    return false;
-                }
-                var user = "admin";
-                Username = document.frmRegis.User.value;
-                if(Username.length == "")
-                {
-                    alert("กรุณาป้อนชื่อผู้ใช้");
-                    return false;
-                }
-                if(Username.length == user.length)
-                {
-                    alert("Username นี้มีผู้ใช้งานแล้ว");
-                    return false;
-                }
-				
-				Email = document.frmRegis.email.value;
-                if(Email.length == "")
-                {
-                    alert("กรุณาป้อนอีเมลล์");
-                    return false;
-                }
-               
-                password = document.frmRegis.password.value;
-                if(password.length < 8)
-                {
-                    alert("กรุณาป้อนรหัสผ่านอย่างน้อย 8 ตัว");
-                    return false;
-                }
-            }
-    </script>
-
+    <title>Register</title>
 </head>
-<body style="background-color:yellow;">
-<center>
-    <table  border="0" width="400px" >
-        <form name="frmRegis" method="post" action="/" onsubmit="return chk()">
+<body style="color: blue" bgcolor="aquamarine">
 
-                <tr><td colspan="2" align="center"><h1>Member</h1></td></tr>
-                <tr><td><h4>Name : </h4></td><td><input type="text" name="name" size="40" placeholder="Name"></td></tr>
-                <tr><td><h4>Surname : </h4></td><td><input type="text" name="surname" size="40" placeholder="surname"></td></tr>
-                <tr><td><h4>Username: </h4></td><td><input type="text" name="User" size="40" placeholder="Username"></td></tr>
-			
-			<tr><td><h4>Email :</h4></td><td> <input type="email" name="email" size="40" placeholder="Email"></td></tr>
-               
-                <tr><td><h4>Password : </h4></td><td><input type="password" name="password" size="40" placeholder="Password"></td></tr>
-                <tr><td colspan="2" align="center"><input type="submit" name="submit" size="40" value="Register"></td></tr>
-
-        </form>
-    </table>
-</center>
+<table border="0" width="400px" align="center">
+    <tr><td colspan="2" align="center"><h1>Register</h1></td></tr>
+    <form method="post" action="{{ url_for('register') }}">
+        {{ form.csrf_token }}
+        <h2><tr><td>Name : </td><td>{{ form.name }} </td></tr></h2>
+        <h2><tr><td>Lastname : </td><td> {{ form.last }} </td></tr></h2>
+        <h2><tr><td>Email : </td><td> {{ form.email }}</td></tr></h2>
+        {% for error in form.email.errors %}
+            <tr><td colspan="2" align="center"><li style="color:red">{{ error }}</li></td></tr>
+            <script language="JavaScript">alert("กรุณาป้อน Email ให้ถูกต้อง");</script>
+        {% endfor %}
+        <h2><tr><td>Username : </td><td> {{ form.username }} </td></tr></h2>
+        <h2><tr><td>Password : </td><td> {{ form.password }} </td></tr></h2>
+        {% for error in form.password.errors %}
+            <tr><td colspan="2" align="center"><li style="color:red">{{ error }}</li></td></tr>
+            <script language="JavaScript">alert("กรุณาป้อนรหัสผ่านอย่างน้อย 8-12 ตัว");</script>
+        {% endfor %}
+        <tr><td colspan="2" align="center"><input type="submit" value="Submit"/></td></tr>
+    </form>
+</table>
+</table>
 </body>
 </html>
-    
