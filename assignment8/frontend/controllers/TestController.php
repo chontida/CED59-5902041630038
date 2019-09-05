@@ -6,10 +6,10 @@ use yii\web\controllers;
 
 class TestController extends \yii\web\Controller
 {
-    public function actionTest() {
-        $dara = 'testxxxxxxxxxxx';
+    public function actionIndex() {
+        $data = 'testxxxxxxxxxxx';
         return $this->render('index',[
-            'xdata' => $dara
+            'xdata' => $data
         ]);
     }
     

@@ -2,4 +2,3 @@
 
 
 <?php echo $xdata; ?>
-<?=$data?>
