@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
 
 </head>
 <body>
@@ -12,3 +13,32 @@
 </form>
 </body>
 </html>
+=======
+    <title>Register</title>
+</head>
+<body style="color: blue" bgcolor="aquamarine">
+
+<table border="0" width="400px" align="center">
+    <tr><td colspan="2" align="center"><h1>Register</h1></td></tr>
+    <form method="post" action="{{ url_for('register') }}">
+        {{ form.csrf_token }}
+        <h2><tr><td>Name : </td><td>{{ form.name }} </td></tr></h2>
+        <h2><tr><td>Lastname : </td><td> {{ form.last }} </td></tr></h2>
+        <h2><tr><td>Email : </td><td> {{ form.email }}</td></tr></h2>
+        {% for error in form.email.errors %}
+            <tr><td colspan="2" align="center"><li style="color:red">{{ error }}</li></td></tr>
+            <script language="JavaScript">alert("กรุณาป้อน Email ให้ถูกต้อง");</script>
+        {% endfor %}
+        <h2><tr><td>Username : </td><td> {{ form.username }} </td></tr></h2>
+        <h2><tr><td>Password : </td><td> {{ form.password }} </td></tr></h2>
+        {% for error in form.password.errors %}
+            <tr><td colspan="2" align="center"><li style="color:red">{{ error }}</li></td></tr>
+            <script language="JavaScript">alert("กรุณาป้อนรหัสผ่านอย่างน้อย 8-12 ตัว");</script>
+        {% endfor %}
+        <tr><td colspan="2" align="center"><input type="submit" value="Submit"/></td></tr>
+    </form>
+</table>
+</table>
+</body>
+</html>
+>>>>>>> 05592bb9d8684e9834f41ffcc74e0cf8bacc07b6
